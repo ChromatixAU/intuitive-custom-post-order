@@ -25,3 +25,6 @@ ATTENTION: Only if you use `get_posts()` to re-overwrite to the default order( `
 ## License
 
 GPLv2 or later
+
+## Additions
+* Fix for multisite by using restore_current_site()
