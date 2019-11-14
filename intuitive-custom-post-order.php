@@ -35,8 +35,8 @@ function hicpo_uninstall()
 		foreach( $blogids as $blog_id ) {
 			switch_to_blog( $blog_id );
 			hicpo_uninstall_db_terms();
+			restore_current_blog();
 		}
-		switch_to_blog( $curr_blog );
 		hicpo_uninstall_db_blogs();
 	} else {
 		hicpo_uninstall_db_terms();
@@ -711,7 +711,7 @@ class Hicpo
 			$current = $blog_id;
 			switch_to_blog(1);
 			$hicpo_network_sites = get_option( 'hicpo_network_sites' );
-			switch_to_blog($current);
+			restore_current_blog();
 			if ( !$hicpo_network_sites ) return $pieces;
 		} else {
 			if ( !get_option( 'hicpo_network_sites' ) ) return $pieces;
@@ -734,7 +734,7 @@ class Hicpo
 			$current = $blog_id;
 			switch_to_blog(1);
 			$hicpo_network_sites = get_option( 'hicpo_network_sites' );
-			switch_to_blog($current);
+			restore_current_blog();
 			if ( !$hicpo_network_sites ) return $blogs;
 		} else {
 			if ( !get_option( 'hicpo_network_sites' ) ) return $blogs;
@@ -797,7 +797,7 @@ class Hicpo
 				$current = $blog_id;
 				switch_to_blog(1);
 				$hicpo_network_sites = get_option( 'hicpo_network_sites' );
-				switch_to_blog($current);
+				restore_current_blog();
 				if ( !$hicpo_network_sites ) return;
 			} else {
 				if ( !get_option( 'hicpo_network_sites' ) ) return;
